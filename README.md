@@ -1,4 +1,4 @@
-# Wizzie Community Stack
+![](https://user-images.githubusercontent.com/4025771/44583199-7e492c80-a7a4-11e8-9e92-e8580e05ab43.png)
 
 ## Architecture
 
