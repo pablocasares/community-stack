@@ -65,3 +65,13 @@ wizziecommunitystack_zz-cep_1                /bin/sh -c exec /bin/cep-s ...   Up
 | WizzVis        | 3000           | Access to visualization interface |
 | Druid Broker   | 8080           | Query data using druid API        |
 | Druid Overlord | 8084           | Manage indexing tasks             |
+
+## Extra documentation
+
+* [Normalizer docs](https://wizzie-io.github.io/normalizer/)
+* [Enricher docs](https://wizzie-io.github.io/enricher/)
+* [ZZ-CEP docs](https://wizzie-io.github.io/zz-cep/)
+* WizzVis API docs (Comming soon!)
+* [Druid Kafka Indexing tasks docs](http://druid.io/docs/latest/development/extensions-core/kafka-ingestion.html)
+* [Druid Querying docs](http://druid.io/docs/latest/querying/querying.html)
+* [Kafka Operations docs](https://kafka.apache.org/documentation/#basic_ops)
