@@ -33,3 +33,12 @@ Now, you only need to run the docker-compose inside repo folder:
 ```
 docker-compose up
 ```
+
+## Ports Binding
+
+| Service        | Port           | Usage                             |
+| :------------- | :------------- | :-------------------------------- |
+| Kafka          | 9092           | Send data to wizzie stack         |
+| WizzVis        | 3000           | Access to visualization interface |
+| Druid Broker   | 8080           | Query data using druid API        |
+| Druid Overlord | 8084           | Manage indexing tasks             |
