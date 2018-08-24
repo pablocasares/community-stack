@@ -1,0 +1,26 @@
+# Service Discovery
+druid.selectors.indexing.serviceName=overlord
+druid.selectors.coordinator.serviceName=coordinator
+
+# Extensions
+druid.extensions.directory=/opt/druid/extensions
+druid.extensions.hadoopDependenciesDir=/opt/druid/hadoop-dependencies
+druid.extensions.loadList=["druid-kafka-indexing-service", "postgresql-metadata-storage"]
+
+# Zookeeper
+druid.zk.paths.base=/druid
+druid.zk.service.host=${ZOOKEEPER_SERVER}
+
+# Logging
+druid.emitter=logging
+druid.emitter.logging.logLevel=${LOG_LEVEL}
+
+# Metadata Storage
+druid.metadata.storage.type=postgresql
+druid.metadata.storage.connector.connectURI=jdbc:postgresql://postgres:5432/wizz_vis_development
+druid.metadata.storage.connector.user=app_user
+druid.metadata.storage.connector.password=app_password
+
+# Deep Storage
+druid.storage.type=local
+druid.storage.storageDirectory=var/druid/segments
