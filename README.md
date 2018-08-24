@@ -34,6 +34,29 @@ Now, you only need to run the docker-compose inside repo folder:
 docker-compose up
 ```
 
+You can check using `docker-compose ps` inside repo folder.
+
+```
+root@kubeubuntu:~/community-stack# docker-compose ps
+                   Name                                 Command               State               Ports
+-------------------------------------------------------------------------------------------------------------------
+wizziecommunitystack_druid-broker_1          /bin/sh -c druid-start.sh        Up       0.0.0.0:8080->8080/tcp
+wizziecommunitystack_druid-coordinator_1     /bin/sh -c druid-start.sh        Up
+wizziecommunitystack_druid-historical_1      /bin/sh -c druid-start.sh        Up
+wizziecommunitystack_druid-init_1            /bin/bash -c /bin/bash -c  ...   Exit 0
+wizziecommunitystack_druid-middlemanager_1   /bin/sh -c druid-start.sh        Up
+wizziecommunitystack_druid-overlord_1        /bin/sh -c druid-start.sh        Up       0.0.0.0:8084->8084/tcp
+wizziecommunitystack_enricher_1              /bin/sh -c exec /bin/enric ...   Up
+wizziecommunitystack_kafka_1                 start-kafka.sh                   Up       0.0.0.0:9092->9092/tcp
+wizziecommunitystack_normalizer_1            /bin/sh -c exec /bin/norma ...   Up
+wizziecommunitystack_postgres_1              docker-entrypoint.sh postgres    Up       5432/tcp
+wizziecommunitystack_redis_1                 docker-entrypoint.sh redis ...   Up       6379/tcp
+wizziecommunitystack_sidekiq_1               scripts/docker-entrypoint- ...   Up
+wizziecommunitystack_wizz-vis_1              scripts/docker-entrypoint- ...   Up       0.0.0.0:3000->3000/tcp
+wizziecommunitystack_zookeeper_1             /docker-entrypoint.sh zkSe ...   Up       2181/tcp, 2888/tcp, 3888/tcp
+wizziecommunitystack_zz-cep_1                /bin/sh -c exec /bin/cep-s ...   Up
+```
+
 ## Ports Binding
 
 | Service        | Port           | Usage                             |
