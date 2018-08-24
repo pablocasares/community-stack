@@ -14,6 +14,8 @@ druid.zk.service.host=${ZOOKEEPER_SERVER}
 # Logging
 druid.emitter=logging
 druid.emitter.logging.logLevel=${LOG_LEVEL}
+druid.indexer.logs.type=file
+druid.indexer.logs.directory=/opt/druid/var/druid/indexing-logs
 
 # Metadata Storage
 druid.metadata.storage.type=postgresql
@@ -23,4 +25,4 @@ druid.metadata.storage.connector.password=app_password
 
 # Deep Storage
 druid.storage.type=local
-druid.storage.storageDirectory=var/druid/segments
+druid.storage.storageDirectory=/opt/druid/var/druid/segments/

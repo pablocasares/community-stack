@@ -8,7 +8,7 @@ druid.server.maxSize=5368709120
 druid.segmentCache.locations=[{"path": "/opt/druid/data", "maxSize": 5368709120}]
 
 # Logging
-druid.monitoring.monitors=["io.druid.client.cache.CacheMonitor", "com.metamx.metrics.JvmMonitor", "io.druid.server.metrics.HistoricalMetricsMonitor"]
+druid.monitoring.monitors=["io.druid.client.cache.CacheMonitor", "io.druid.java.util.metrics.JvmMonitor", "io.druid.server.metrics.HistoricalMetricsMonitor"]
 
 # Processing
 druid.processing.buffer.sizeBytes=256000000

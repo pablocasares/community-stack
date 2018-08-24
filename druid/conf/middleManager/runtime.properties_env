@@ -14,12 +14,12 @@ druid.indexer.fork.property.druid.processing.buffer.sizeBytes=536870912
 druid.indexer.fork.property.druid.processing.numThreads=2
 
 # Logging
-druid.monitoring.monitors=["com.metamx.metrics.JvmMonitor", "io.druid.server.metrics.EventReceiverFirehoseMonitor"]
-druid.indexer.fork.property.druid.monitoring.monitors=["com.metamx.metrics.JvmMonitor"]
+druid.monitoring.monitors=["io.druid.java.util.metrics.JvmMonitor", "io.druid.server.metrics.EventReceiverFirehoseMonitor"]
+druid.indexer.fork.property.druid.monitoring.monitors=["io.druid.java.util.metrics.JvmMonitor"]
 
 # Peon Deep Storage
 druid.indexer.fork.property.druid.storage.type=local
-druid.indexer.fork.property.druid.storage.storageDirectory=var/druid/segments
+druid.indexer.fork.property.druid.storage.storageDirectory=/opt/druid/var/druid/segments/
 
 # Peon
 druid.indexer.task.restoreTasksOnRestart=true
