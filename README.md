@@ -4,6 +4,8 @@
 
 <div style="text-align:center"><img src ="https://user-images.githubusercontent.com/4025771/44580729-56a19680-a79b-11e8-97f6-e48ce39cb891.png" /></div>
 
+You can use our [prozzie](https://github.com/wizzie-io/prozzie) like *Source of data*
+
 ## Requirements
 
 We recommend a machine with at least:
