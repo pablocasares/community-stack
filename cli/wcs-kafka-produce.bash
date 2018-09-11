@@ -1,0 +1,1 @@
+wcs-kafka-topics.bash

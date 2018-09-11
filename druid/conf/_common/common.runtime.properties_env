@@ -19,9 +19,9 @@ druid.indexer.logs.directory=/opt/druid/var/druid/indexing-logs
 
 # Metadata Storage
 druid.metadata.storage.type=postgresql
-druid.metadata.storage.connector.connectURI=jdbc:postgresql://postgres:5432/wizz_vis_development
-druid.metadata.storage.connector.user=app_user
-druid.metadata.storage.connector.password=app_password
+druid.metadata.storage.connector.connectURI=jdbc:postgresql://postgres:5432/druid
+druid.metadata.storage.connector.user=${DB_USER}
+druid.metadata.storage.connector.password=${DB_PASSWORD}
 
 # Deep Storage
 druid.storage.type=local

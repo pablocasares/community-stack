@@ -31,27 +31,27 @@ services:
     depends_on:
       - kafka
     environment:
-       APPLICATION_ID: wizzie-stack
-       KAFKA_BOOTSTRAP_SERVER: kafka:9092
-       METRIC_ENABLE: 'true'
+      APPLICATION_ID: wizzie-stack
+      KAFKA_BOOTSTRAP_SERVER: kafka:9092
+      METRIC_ENABLE: 'true'
   enricher:
     image: wizzieio/enricher:0.5.1
     restart: always
     depends_on:
       - kafka
     environment:
-       APPLICATION_ID: wizzie-stack
-       KAFKA_BOOTSTRAP_SERVER: kafka:9092
-       METRIC_ENABLE: 'true'
+      APPLICATION_ID: wizzie-stack
+      KAFKA_BOOTSTRAP_SERVER: kafka:9092
+      METRIC_ENABLE: 'true'
   zz-cep:
     image: wizzieio/zz-cep:0.4.0
     restart: always
     depends_on:
       - kafka
     environment:
-       APPLICATION_ID: wizzie-stack
-       KAFKA_BOOTSTRAP_SERVER: kafka:9092
-       METRIC_ENABLE: 'true'
+      APPLICATION_ID: wizzie-stack
+      KAFKA_BOOTSTRAP_SERVER: kafka:9092
+      METRIC_ENABLE: 'true'
 
   druid-init:
     image: wizzieio/druid:0.12.1
@@ -73,7 +73,7 @@ services:
       "
   druid-coordinator:
     image: druid-wizzieio
-    build: druid/.
+    build: ../druid/.
     restart: always
     depends_on:
       - zookeeper
@@ -81,14 +81,16 @@ services:
     volumes:
       - druid-share-volume:/opt/druid/var
     environment:
-       ZOOKEEPER_SERVER: zookeeper:2181
-       DRUID_SERVICE: coordinator
-       DRUID_HOST: druid-coordinator
-       DRUID_SERVICE_PORT: 8081
-       DRUID_JVM_ARGS: "-server -Xms256m -Xmx256m -Duser.timezone=UTC -Dfile.encoding=UTF-8 -Djava.io.tmpdir=var/tmp -Djava.util.logging.manager=org.apache.logging.log4j.jul.LogManager -Dderby.stream.error.file=var/druid/derby.log "
+      ZOOKEEPER_SERVER: zookeeper:2181
+      DRUID_SERVICE: coordinator
+      DRUID_HOST: druid-coordinator
+      DRUID_SERVICE_PORT: 8081
+      DRUID_JVM_ARGS: "-server -Xms256m -Xmx256m -Duser.timezone=UTC -Dfile.encoding=UTF-8 -Djava.io.tmpdir=var/tmp -Djava.util.logging.manager=org.apache.logging.log4j.jul.LogManager -Dderby.stream.error.file=var/druid/derby.log "
+      DB_USER: $DB_USER
+      DB_PASSWORD: $DB_PASSWORD
   druid-overlord:
     image: druid-wizzieio
-    build: druid/.
+    build: ../druid/.
     restart: always
     depends_on:
       - zookeeper
@@ -99,14 +101,16 @@ services:
     volumes:
       - druid-share-volume:/opt/druid/var
     environment:
-       ZOOKEEPER_SERVER: zookeeper:2181
-       DRUID_SERVICE: overlord
-       DRUID_HOST: druid-overlord
-       DRUID_SERVICE_PORT: 8084
-       DRUID_JVM_ARGS: "-server -Xms256m -Xmx256m -Duser.timezone=UTC -Dfile.encoding=UTF-8 -Djava.io.tmpdir=var/tmp -Djava.util.logging.manager=org.apache.logging.log4j.jul.LogManager "
+      ZOOKEEPER_SERVER: zookeeper:2181
+      DRUID_SERVICE: overlord
+      DRUID_HOST: druid-overlord
+      DRUID_SERVICE_PORT: 8084
+      DRUID_JVM_ARGS: "-server -Xms256m -Xmx256m -Duser.timezone=UTC -Dfile.encoding=UTF-8 -Djava.io.tmpdir=var/tmp -Djava.util.logging.manager=org.apache.logging.log4j.jul.LogManager "
+      DB_USER: $DB_USER
+      DB_PASSWORD: $DB_PASSWORD
   druid-broker:
     image: druid-wizzieio
-    build: druid/.
+    build: ../druid/.
     restart: always
     ports:
       - 8080:8080
@@ -123,7 +127,7 @@ services:
        DRUID_JVM_ARGS: "-server -Xms1g -Xmx1g -XX:MaxDirectMemorySize=1792m -Duser.timezone=UTC -Dfile.encoding=UTF-8 -Djava.io.tmpdir=var/tmp -Djava.util.logging.manager=org.apache.logging.log4j.jul.LogManager "
   druid-middlemanager:
     image: druid-wizzieio
-    build: druid/.
+    build: ../druid/.
     restart: always
     depends_on:
       - zookeeper
@@ -131,14 +135,14 @@ services:
     volumes:
       - druid-share-volume:/opt/druid/var
     environment:
-       ZOOKEEPER_SERVER: zookeeper:2181
-       DRUID_SERVICE: middleManager
-       DRUID_HOST: druid-middlemanager
-       DRUID_SERVICE_PORT: 8091
-       DRUID_JVM_ARGS: "-server -Xms64m -Xmx64m -Duser.timezone=UTC -Dfile.encoding=UTF-8 -Djava.io.tmpdir=var/tmp -Djava.util.logging.manager=org.apache.logging.log4j.jul.LogManager "
+      ZOOKEEPER_SERVER: zookeeper:2181
+      DRUID_SERVICE: middleManager
+      DRUID_HOST: druid-middlemanager
+      DRUID_SERVICE_PORT: 8091
+      DRUID_JVM_ARGS: "-server -Xms64m -Xmx64m -Duser.timezone=UTC -Dfile.encoding=UTF-8 -Djava.io.tmpdir=var/tmp -Djava.util.logging.manager=org.apache.logging.log4j.jul.LogManager "
   druid-historical:
     image: druid-wizzieio
-    build: druid/.
+    build: ../druid/.
     restart: always
     depends_on:
       - zookeeper
@@ -146,17 +150,18 @@ services:
     volumes:
       - druid-share-volume:/opt/druid/var
     environment:
-       ZOOKEEPER_SERVER: zookeeper:2181
-       DRUID_SERVICE: historical
-       DRUID_HOST: druid-historical
-       DRUID_SERVICE_PORT: 8081
-       DRUID_JVM_ARGS: "-server -Xms1g -Xmx1g -XX:MaxDirectMemorySize=1280m -Duser.timezone=UTC -Dfile.encoding=UTF-8 -Djava.io.tmpdir=var/tmp -Djava.util.logging.manager=org.apache.logging.log4j.jul.LogManager "
+      ZOOKEEPER_SERVER: zookeeper:2181
+      DRUID_SERVICE: historical
+      DRUID_HOST: druid-historical
+      DRUID_SERVICE_PORT: 8081
+      DRUID_JVM_ARGS: "-server -Xms1g -Xmx1g -XX:MaxDirectMemorySize=1280m -Duser.timezone=UTC -Dfile.encoding=UTF-8 -Djava.io.tmpdir=var/tmp -Djava.util.logging.manager=org.apache.logging.log4j.jul.LogManager "
 
   postgres:
+    image: 'postgres:9.6-alpine'
     environment:
-      POSTGRES_USER: app_user
-      POSTGRES_PASSWORD: app_password
-    image: 'postgres:9'
+      POSTGRES_USER: $DB_USER
+      POSTGRES_PASSWORD: $DB_PASSWORD
+      POSTGRES_DB: druid
     volumes:
       - 'postgres:/var/lib/postgresql/data'
     healthcheck:
@@ -177,12 +182,11 @@ services:
     entrypoint: scripts/docker-entrypoint-sidekiq.sh
     environment:
       DB_HOST: postgres
-      DB_USER: app_user
-      DB_PASSWORD: app_password
       REDIS_URL: redis://redis:6379/0
       RAILS_LOG_TO_STDOUT: 1
+      DATABASE_URL: postgresql://$DB_USER:$DB_PASSWORD@postgres:5432/wizzvis
     env_file:
-      - '.env'
+      - ${PREFIX}/etc/wcs/.env
   wizz-vis:
     image: wizzieio/wizz-vis:0.7
     depends_on:
@@ -192,12 +196,11 @@ services:
       - '3000:3000'
     environment:
       DB_HOST: postgres
-      DB_USER: app_user
-      DB_PASSWORD: app_password
       REDIS_URL: redis://redis:6379/0
       RAILS_LOG_TO_STDOUT: 1
+      DATABASE_URL: postgresql://$DB_USER:$DB_PASSWORD@postgres:5432/wizzvis
     env_file:
-      - '.env'
+      - ${PREFIX}/etc/wcs/.env
 
 volumes:
   druid-share-volume:
