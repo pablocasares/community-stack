@@ -53,7 +53,7 @@ We recommend a machine with at least:
 In order to install WCS you only need download the latest release or clone the repo and run `setups/linux_setup.sh` script that will guide you through the entire installation.You can also use the next command if you don't want to waste your time messing with git you can run next command as root user or sudo command:
 
 ```
-sudo bash -c "$(curl -L --header 'Accept: application/vnd.github.v3.raw' 'https://api.github.com/repos/wizzie-io/community-stack/contents/setups/linux_setup.sh?ref=master')"
+sudo bash -c "$(curl -L --header 'Accept: application/vnd.github.v3.raw' 'https://api.github.com/repos/wizzie-io/community-stack/contents/setups/linux_setup.sh?ref=1.0.0')"
 ```
 
 The setup script will install `Docker` and `Docker Compose` and some necessary tools like `curl` and `net-tools`.
