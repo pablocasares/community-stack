@@ -63,7 +63,7 @@ The setup script will install `Docker` and `Docker Compose` and some necessary t
 Next you can find information about WCS's configuration, execution and kafka operations.
 
 ### Configuration
-When you install WCS, the installer will create a `.env` file located in `$PREFIX/etc/wcs` directory, you will configure some vars during installation, but if you need modify some vars you must consider next sections:
+When you install WCS, the installer will create a .env file located in $PREFIX/etc/wcs directory. In the .env file you will find three sections with some vars in it. These sections are:
 
 * **MANDATORY**: You need to configure this vars before run the application.
 * **OPTIONAL**: You can configure this vars, if you want to change some configurations or enable some features.
