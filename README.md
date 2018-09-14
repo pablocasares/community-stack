@@ -10,6 +10,8 @@
 
 Wizzie Community Stack (WCS) is a lightweight version of Wizzie Data Platform ([WDP](https://wizzie.io/)).
 
+Wizzie Data Platform, or WDP, is a blazingly fast, highly scalable, end-to-end solution for real-time processing, storage and visualization of any data type and format.
+
 ## Components and architecture
 
 WCS is composed by:
