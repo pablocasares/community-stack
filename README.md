@@ -162,7 +162,7 @@ Check next links to know about awesome Wizzie components and check documentation
 * [Normalizer docs](https://wizzie-io.github.io/normalizer/)
 * [Enricher docs](https://wizzie-io.github.io/enricher/)
 * [ZZ-CEP docs](https://wizzie-io.github.io/zz-cep/)
-* WizzVis API docs (Comming soon!)
+* [WizzVis API docs](https://wizzie-io.github.io/wizz-vis/)
 * [Druid Kafka Indexing tasks docs](http://druid.io/docs/latest/development/extensions-core/kafka-ingestion.html)
 * [Druid Querying docs](http://druid.io/docs/latest/querying/querying.html)
 * [Kafka Operations docs](https://kafka.apache.org/documentation/#basic_ops)
