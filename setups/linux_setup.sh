@@ -255,6 +255,13 @@ postinstall () {
             systemctl restart docker
         fi
     fi
+
+    declare -a placeholder_files=(
+      "${PREFIX}/etc/wcs/normalizer-stream-plan.json"
+      "${PREFIX}/etc/wcs/enricher-stream-plan.json"
+      "${PREFIX}/etc/wcs/zz-cep-stream-plan.json"
+    )
+    touch "${placeholder_files[@]}"
 }
 
 # Wizzie Community Stack setup 

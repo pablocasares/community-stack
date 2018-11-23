@@ -36,8 +36,12 @@ services:
       - kafka
     environment:
       APPLICATION_ID: wizzie-stack
+      BOOTSTRAP_CLASSNAME: io.wizzie.bootstrapper.bootstrappers.impl.FileBootstrapper
+      BOOTSTRAP_FILEPATH: /opt/normalizer/stream-plan.json
       KAFKA_BOOTSTRAP_SERVER: kafka:9092
       METRIC_ENABLE: 'true'
+    volumes:
+      - ${PREFIX}/etc/wcs/normalizer-stream-plan.json:/opt/normalizer/stream-plan.json
   enricher:
     image: wizzieio/enricher:0.5.1
     restart: always
@@ -45,8 +49,12 @@ services:
       - kafka
     environment:
       APPLICATION_ID: wizzie-stack
+      BOOTSTRAP_CLASSNAME: io.wizzie.bootstrapper.bootstrappers.impl.FileBootstrapper
+      BOOTSTRAP_FILEPATH: /opt/enricher/stream-plan.json
       KAFKA_BOOTSTRAP_SERVER: kafka:9092
       METRIC_ENABLE: 'true'
+    volumes:
+      - ${PREFIX}/etc/wcs/enricher-stream-plan.json:/opt/enricher/stream-plan.json
   zz-cep:
     image: wizzieio/zz-cep:0.4.0
     restart: always
@@ -54,8 +62,12 @@ services:
       - kafka
     environment:
       APPLICATION_ID: wizzie-stack
+      BOOTSTRAP_CLASSNAME: io.wizzie.bootstrapper.bootstrappers.impl.FileBootstrapper
+      BOOTSTRAP_FILEPATH: /opt/zz-cep/stream-plan.json
       KAFKA_BOOTSTRAP_SERVER: kafka:9092
       METRIC_ENABLE: 'true'
+    volumes:
+      - ${PREFIX}/etc/wcs/zz-cep-stream-plan.json:/opt/zz-cep/stream-plan.json
 
   druid-init:
     image: wizzieio/druid:0.12.1
