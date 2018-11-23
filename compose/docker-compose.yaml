@@ -7,6 +7,8 @@ services:
     environment:
       ZOO_MY_ID: 1
       ZOO_SERVERS: server.1=zookeeper:2888:3888
+    volumes:
+      - 'zookeeper:/var/lib/zookeeper'
   kafka:
     networks:
       default:
@@ -25,6 +27,8 @@ services:
       KAFKA_BROKER_ID: 0
       KAFKA_LOG_DIRS: /kafka/kafka-logs
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+    volumes:
+      - 'kafka:/kafka'
   normalizer:
     image: wizzieio/normalizer:0.6.1.1
     restart: always
@@ -206,3 +210,5 @@ volumes:
   druid-share-volume:
   redis:
   postgres:
+  zookeeper:
+  kafka:
