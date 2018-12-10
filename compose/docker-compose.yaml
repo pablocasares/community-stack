@@ -14,7 +14,7 @@ services:
       default:
         aliases:
           - ${INTERFACE_IP}
-    image: wurstmeister/kafka:2.11-1.1.1
+    image: wurstmeister/kafka:2.12-2.1.0
     restart: always
     depends_on:
       - zookeeper
@@ -32,7 +32,7 @@ services:
     volumes:
       - 'kafka:/kafka'
   normalizer:
-    image: wizzieio/normalizer:0.6.1.1
+    image: wizzieio/normalizer:0.7.1
     restart: always
     depends_on:
       - kafka
@@ -45,7 +45,7 @@ services:
     volumes:
       - ${PREFIX}/etc/wcs/normalizer-stream-plan.json:/opt/normalizer/stream-plan.json
   enricher:
-    image: wizzieio/enricher:0.5.1
+    image: wizzieio/enricher:0.6.0
     restart: always
     depends_on:
       - kafka
@@ -58,7 +58,7 @@ services:
     volumes:
       - ${PREFIX}/etc/wcs/enricher-stream-plan.json:/opt/enricher/stream-plan.json
   zz-cep:
-    image: wizzieio/zz-cep:0.4.0
+    image: wizzieio/zz-cep:0.5.0
     restart: always
     depends_on:
       - kafka
@@ -72,7 +72,7 @@ services:
       - ${PREFIX}/etc/wcs/zz-cep-stream-plan.json:/opt/zz-cep/stream-plan.json
 
   druid-init:
-    image: wizzieio/druid:0.12.1
+    image: wizzieio/druid:0.12.3-stringfirstlast
     depends_on:
       - zookeeper
     volumes:
@@ -206,7 +206,7 @@ services:
     env_file:
       - ${PREFIX}/etc/wcs/.env
   wizz-vis:
-    image: wizzieio/wizz-vis:0.7
+    image: wizzieio/wizz-vis:0.10
     depends_on:
       - sidekiq
     entrypoint: scripts/docker-entrypoint-web-prod.sh
